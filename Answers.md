@@ -16,4 +16,4 @@ Q2 / Le Warning est qu’il y a plusieurs objets au même nom et seront donc dif
 
 	Exercice 2:
 Q1 / Une fois ObservableObject,@Published et @ObservedObject dans le code la variable de l’iventaire se met a jour a chaque ajout.
- 	
+ Q2/ le ObservedObject permet de mettre a jour la valeur inventaire et donc la liste, donc ça marche 	
