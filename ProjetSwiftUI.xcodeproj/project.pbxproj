@@ -14,6 +14,7 @@
 		DF69FAE52B5A7977002CA436 /* ProjetSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF69FAE42B5A7977002CA436 /* ProjetSwiftUITests.swift */; };
 		DF69FAEF2B5A7978002CA436 /* ProjetSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF69FAEE2B5A7978002CA436 /* ProjetSwiftUIUITests.swift */; };
 		DF69FAF12B5A7978002CA436 /* ProjetSwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF69FAF02B5A7978002CA436 /* ProjetSwiftUIUITestsLaunchTests.swift */; };
+		DF69FAFE2B5A801E002CA436 /* AddItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF69FAFD2B5A801E002CA436 /* AddItemView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		DF69FAEA2B5A7978002CA436 /* ProjetSwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjetSwiftUIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF69FAEE2B5A7978002CA436 /* ProjetSwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetSwiftUIUITests.swift; sourceTree = "<group>"; };
 		DF69FAF02B5A7978002CA436 /* ProjetSwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetSwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		DF69FAFD2B5A801E002CA436 /* AddItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddItemView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				DF69FAD32B5A7975002CA436 /* ProjetSwiftUIApp.swift */,
 				DF69FAD52B5A7975002CA436 /* ContentView.swift */,
+				DF69FAFD2B5A801E002CA436 /* AddItemView.swift */,
 				DF69FAD72B5A7977002CA436 /* Assets.xcassets */,
 				DF69FAD92B5A7977002CA436 /* Preview Content */,
 			);
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DF69FAD62B5A7975002CA436 /* ContentView.swift in Sources */,
+				DF69FAFE2B5A801E002CA436 /* AddItemView.swift in Sources */,
 				DF69FAD42B5A7975002CA436 /* ProjetSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
