@@ -17,3 +17,4 @@ Q2 / Le Warning est qu’il y a plusieurs objets au même nom et seront donc dif
 	Exercice 2:
 Q1 / Une fois ObservableObject,@Published et @ObservedObject dans le code la variable de l’iventaire se met a jour a chaque ajout.
  Q2/ le ObservedObject permet de mettre a jour la valeur inventaire et donc la liste, donc ça marche 	
+Q3/ @StateObject est utilisé pour gérer les objets observés (conformes à ObservableObject) qui sont partagés entre plusieurs vues. Il garantit qu'une seule instance de l'objet est créée et partagée entre les vues, ce qui évite les problèmes de duplication d'instances.
