@@ -54,22 +54,26 @@ enum Rarity:CaseIterable {
     func ShadowColor() -> Color {
         switch self {
         case .common:
-            return Color(hex: 0x808080) // Gris
+            return Color(hex: 0x808080)
         case .uncommon:
-            return Color(hex: 0x008000) // Vert
+            return Color(hex: 0x008000)
         case .rare:
-            return Color(hex: 0x0000FF) // Bleu
+            return Color(hex: 0x0000FF)
         case .epic:
-            return Color(hex: 0x800080) // Violet
+            return Color(hex: 0x800080)
         case .legendary:
-            return Color(hex: 0xFFA500) // Orange (légèrement plus foncé)
+            return Color(hex: 0xFFA500)
         case .unique:
-            return Color(hex: 0xFFFF00) // Jaune
+            return Color(hex: 0xFFFF00)
         }
     }
 }
 
-struct LootItem: Hashable {
+struct LootItem: Hashable, Identifiable {
+    var id: String {
+        return "\(name)-\(type)-\(rarity)-\(game)"
+    }
+
     var quantity: Int = 1
     var name: String
     var type: ItemType
@@ -77,6 +81,7 @@ struct LootItem: Hashable {
     var attackStrength: Int?
     var game: Game
 }
+
 
 
 

@@ -17,6 +17,8 @@ struct AddItemView: View {
     @State var selectedGame: Game = Game.emptyGame
     @State var type: ItemType = ItemType.unknown
     @EnvironmentObject var inventory: Inventory
+    @State private var showingAlert = false
+    @State private var alertMessage = ""
     
     var body: some View {
         Form {
@@ -28,11 +30,12 @@ struct AddItemView: View {
                     }
                 }
             }
+            
             Section {
                 Picker("Jeu", selection: $selectedGame) {
-                    Text("Non spécifié")
-                    ForEach(availableGames, id: \.id) { game in
-                        Text(game.name)
+                    Text(Game.emptyGame.name)
+                    ForEach(availableGames, id: \.self) { game in
+                        Text(String(describing: game.name).capitalized)
                     }
                 }
                 Stepper(value: $quantity, in: 1...100) {
@@ -53,7 +56,6 @@ struct AddItemView: View {
                 }
                 .pickerStyle(PalettePickerStyle())
             }
-
             
             Section {
                 Toggle("Item d'attaque", isOn: $hasAttack)
@@ -65,20 +67,61 @@ struct AddItemView: View {
             }
             Section {
                 Button("Ajouter l'objet") {
-                    let newItem = LootItem(
-                        quantity: quantity,
-                        name: name,
-                        type: type,
-                        rarity: rarity,
-                        attackStrength: hasAttack ? attackStrength : nil,
-                        game: selectedGame
-                    )
-                    inventory.addItem(item: newItem)
-                    dismiss()
+                    validateFieldsAndAddItem()
+                }
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Erreur"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                 }
             }
         }
     }
+    
+    private func validateFieldsAndAddItem() {
+            // Validate all fields before adding the item
+            if validateName() && validateType() && validateGame() {
+                let newItem = LootItem(
+                    quantity: quantity,
+                    name: name,
+                    type: type,
+                    rarity: rarity,
+                    attackStrength: hasAttack ? attackStrength : nil,
+                    game: selectedGame
+                )
+                inventory.addItem(item: newItem)
+                dismiss()
+            }
+        }
+    
+    private func validateName() -> Bool {
+            if name.isEmpty {
+                alertMessage = "Le nom de l'objet ne doit pas être vide."
+                showingAlert = true
+                return false
+            } else if name.count < 3 {
+                alertMessage = "Le nom de l'objet doit faire au moins 3 caractères."
+                showingAlert = true
+                return false
+            }
+            return true
+        }
+
+        private func validateType() -> Bool {
+            if type == .unknown {
+                alertMessage = "Le type de l'objet ne peut pas être inconnu."
+                showingAlert = true
+                return false
+            }
+            return true
+        }
+
+        private func validateGame() -> Bool {
+            if selectedGame == Game.emptyGame {
+                alertMessage = "Le jeu ne peut pas être vide."
+                showingAlert = true
+                return false
+            }
+            return true
+        }
 }
 
 #Preview {

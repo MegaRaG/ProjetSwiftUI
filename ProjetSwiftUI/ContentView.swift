@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import Charts
 
 class Inventory: ObservableObject {
     @Published var loot: [LootItem] = [
-        LootItem(name: "Epée", type: .unknown, rarity: .common, attackStrength: 10, game: Game.emptyGame),
+        LootItem(name: "Epée", type: .dagger, rarity: .common, attackStrength: 10, game: Game.emptyGame),
         LootItem(name: "Bouclier", type: .shield, rarity: .uncommon, attackStrength: 5, game: Game.emptyGame),
-        LootItem(name: "Armure", type: .unknown, rarity: .rare, attackStrength: nil, game: Game(name: "Elden Ring", genre: .rpg, coverName: "Image"))
+        LootItem(name: "Poison", type: .poison, rarity: .unique, attackStrength: nil, game: Game(name: "Elden Ring", genre: .rpg, coverName: "Image"))
     ]
     
     func addItem(item: LootItem) {
@@ -21,48 +22,41 @@ class Inventory: ObservableObject {
 
 struct ContentView: View {
     @ObservedObject var inventory = Inventory()
-    
     @State var showAddItemView = false
 
     var body: some View {
-        NavigationStack {
+        NavigationView {
             List {
-                ForEach(inventory.loot, id: \.self) { item in
-                    NavigationLink {
-                            LootDetailView(item: item) // On passe directement l'item à la vue
-                        } label: {
-                            VStack(alignment: .leading, spacing: 5) {
-                                HStack {
-                                    Circle()
-                                        .fill(item.rarity.ColorRarity())
-                                        .frame(width: 15, height: 15)
-                                    Text(item.name)
-                                    Text(item.type.rawValue)
-                                        .foregroundColor(.gray)
-                                        .padding(.trailing, 19)
-                                    Spacer()
-                                }
-                                Text("Quantité: \(item.quantity)")
-                                    .foregroundColor(.gray)
-                            }
+                Section(header: Text("Inventaire")) {
+                    ForEach(inventory.loot, id: \.self) { item in
+                        NavigationLink(destination: LootDetailView(item: item)) {
+                            ExtractedView(item: item)
                         }
+                    }
+                }
+
+                Section(header: Text("Statistiques")) {
+                    Chart(inventory.loot) { set in
+                        BarMark(x: .value("Année", set.name),
+                                y: .value("Occurence", set.attackStrength ?? 0)
+                                            )
+                                        }.frame(height: 300)
                 }
             }
-
-            .sheet(isPresented: $showAddItemView, content: {
-                    AddItemView()
+            .sheet(isPresented: $showAddItemView) {
+                AddItemView()
                     .environmentObject(inventory)
-                })
-            .navigationBarTitle("Loot") // Notre titre de page, choisissez le titre que vous voulez
-                .toolbar(content: { // La barre d'outil de notre page
-                    ToolbarItem(placement: ToolbarItemPlacement.automatic) {
-                        Button(action: {
-                            showAddItemView.toggle() // L'action de notre bouton
-                        }, label: {
-                            Image(systemName: "plus.circle.fill")
-                        })
+            }
+            .navigationBarTitle("Loot")
+            .toolbar {
+                ToolbarItem(placement: .automatic) {
+                    Button(action: {
+                        showAddItemView.toggle()
+                    }) {
+                        Image(systemName: "plus.circle.fill")
                     }
-                })
+                }
+            }
         }
     }
 }
@@ -70,4 +64,6 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+
 

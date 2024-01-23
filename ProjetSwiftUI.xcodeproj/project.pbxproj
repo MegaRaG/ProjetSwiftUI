@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF4FBCEE2B5FA1ED002CFDE3 /* ExemplesAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FBCED2B5FA1ED002CFDE3 /* ExemplesAnimations.swift */; };
+		DF4FBCF02B5FC396002CFDE3 /* LootRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FBCEF2B5FC396002CFDE3 /* LootRow.swift */; };
 		DF69FAD42B5A7975002CA436 /* ProjetSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF69FAD32B5A7975002CA436 /* ProjetSwiftUIApp.swift */; };
 		DF69FAD62B5A7975002CA436 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF69FAD52B5A7975002CA436 /* ContentView.swift */; };
 		DF69FAD82B5A7977002CA436 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DF69FAD72B5A7977002CA436 /* Assets.xcassets */; };
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF4FBCED2B5FA1ED002CFDE3 /* ExemplesAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExemplesAnimations.swift; sourceTree = "<group>"; };
+		DF4FBCEF2B5FC396002CFDE3 /* LootRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootRow.swift; sourceTree = "<group>"; };
 		DF69FAD02B5A7975002CA436 /* ProjetSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjetSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DF69FAD32B5A7975002CA436 /* ProjetSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetSwiftUIApp.swift; sourceTree = "<group>"; };
 		DF69FAD52B5A7975002CA436 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 				DFF277652B5AA2EF004C4F72 /* LootItem.swift */,
 				DFF277672B5AA984004C4F72 /* Game.swift */,
 				DFF277692B5AC5D5004C4F72 /* LootDetailView.swift */,
+				DF4FBCED2B5FA1ED002CFDE3 /* ExemplesAnimations.swift */,
+				DF4FBCEF2B5FC396002CFDE3 /* LootRow.swift */,
 			);
 			path = ProjetSwiftUI;
 			sourceTree = "<group>";
@@ -272,8 +278,10 @@
 				DF69FAD62B5A7975002CA436 /* ContentView.swift in Sources */,
 				DFF277682B5AA984004C4F72 /* Game.swift in Sources */,
 				DF69FAFE2B5A801E002CA436 /* AddItemView.swift in Sources */,
+				DF4FBCEE2B5FA1ED002CFDE3 /* ExemplesAnimations.swift in Sources */,
 				DFF2776A2B5AC5D5004C4F72 /* LootDetailView.swift in Sources */,
 				DFF277662B5AA2EF004C4F72 /* LootItem.swift in Sources */,
+				DF4FBCF02B5FC396002CFDE3 /* LootRow.swift in Sources */,
 				DF69FAD42B5A7975002CA436 /* ProjetSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

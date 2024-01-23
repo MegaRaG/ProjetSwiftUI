@@ -24,7 +24,7 @@ struct Game: Identifiable, Hashable {
 let availableGames = [
     Game(name: "Elden Ring", genre: .rpg, coverName: "Image"),
     Game(name: "Skyrim", genre: .rpg, coverName: "Image 1"),
-    Game(name: "WoW", genre: .mmorpg, coverName: "Image 2"),
+    Game(name: "WoW", genre: .mmorpg, coverName: nil),
     Game(name: "CS:GO", genre: .fps, coverName: "Image 3"),
     Game(name: "Diablo IV", genre: .looter, coverName: "Image 4")
 ]
