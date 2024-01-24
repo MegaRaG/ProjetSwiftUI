@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF3F254A2B615D8D00D87C11 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3F25492B615D8D00D87C11 /* Onboarding.swift */; };
 		DF4FBCEE2B5FA1ED002CFDE3 /* ExemplesAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FBCED2B5FA1ED002CFDE3 /* ExemplesAnimations.swift */; };
 		DF4FBCF02B5FC396002CFDE3 /* LootRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FBCEF2B5FC396002CFDE3 /* LootRow.swift */; };
 		DF69FAD42B5A7975002CA436 /* ProjetSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF69FAD32B5A7975002CA436 /* ProjetSwiftUIApp.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF3F25492B615D8D00D87C11 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		DF4FBCED2B5FA1ED002CFDE3 /* ExemplesAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExemplesAnimations.swift; sourceTree = "<group>"; };
 		DF4FBCEF2B5FC396002CFDE3 /* LootRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootRow.swift; sourceTree = "<group>"; };
 		DF69FAD02B5A7975002CA436 /* ProjetSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjetSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +118,7 @@
 				DFF277692B5AC5D5004C4F72 /* LootDetailView.swift */,
 				DF4FBCED2B5FA1ED002CFDE3 /* ExemplesAnimations.swift */,
 				DF4FBCEF2B5FC396002CFDE3 /* LootRow.swift */,
+				DF3F25492B615D8D00D87C11 /* Onboarding.swift */,
 			);
 			path = ProjetSwiftUI;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF3F254A2B615D8D00D87C11 /* Onboarding.swift in Sources */,
 				DF69FAD62B5A7975002CA436 /* ContentView.swift in Sources */,
 				DFF277682B5AA984004C4F72 /* Game.swift in Sources */,
 				DF69FAFE2B5A801E002CA436 /* AddItemView.swift in Sources */,
