@@ -65,3 +65,4 @@ struct OnboardingPageView: View {
         .padding()
     }
 }
+

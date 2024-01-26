@@ -20,22 +20,45 @@ class Inventory: ObservableObject {
         loot.append(item)
     }
 }
+enum LooterFeature {
+    case loot
+    case wishList
+    case profile
+}
 
 struct ContentView: View {
     @ObservedObject var inventory = Inventory()
-    @StateObject var viewModel: OnboardingModel
+    //@StateObject var viewModel: OnboardingModel
     @State var showAddItemView = false
+    @State private var selectedFeature: LooterFeature = .loot
     
     var body: some View {
         NavigationView {
+//            TabView(selection: $selectedFeature) {
+//                      LootView()
+//                          .tabItem {
+//                              Label("Loot", systemImage: "bag.fill")
+//                          }
+//                          .tag(LooterFeature.loot)
+//                      WishListView()
+//                          .tabItem {
+//                              Label("Wishlist", systemImage: "heart.fill")
+//                          }
+//                          .tag(LooterFeature.wishList)
+//                      ProfileView()
+//                          .tabItem {
+//                              Label("Profil", systemImage: "person.fill")
+//                          }
+//                          .tag(LooterFeature.profile)
+//                  }
             List {
-                Section(header: Text("Inventaire")) {
-                    Button(action: {
-                        viewModel.isOnboardingComplete = false
-                    }){
-                        
-                    }
-                }
+//                Section(header: Text("Onboarding")) {
+//                    Button(action: {
+//                        viewModel.isOnboardingComplete = false
+//                    }){
+//                        Text("Bouton Test")
+//                    }
+//                }
                 Section(header: Text("Inventaire")) {
                     ForEach(inventory.loot, id: \.self) { item in
                         NavigationLink(destination: LootDetailView(item: item)) {

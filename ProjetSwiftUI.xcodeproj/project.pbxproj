@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF00958D2B63A7B000A86DF4 /* SelectedFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF00958C2B63A7B000A86DF4 /* SelectedFeature.swift */; };
 		DF3F254A2B615D8D00D87C11 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF3F25492B615D8D00D87C11 /* Onboarding.swift */; };
 		DF4FBCEE2B5FA1ED002CFDE3 /* ExemplesAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FBCED2B5FA1ED002CFDE3 /* ExemplesAnimations.swift */; };
 		DF4FBCF02B5FC396002CFDE3 /* LootRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF4FBCEF2B5FC396002CFDE3 /* LootRow.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DF00958C2B63A7B000A86DF4 /* SelectedFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedFeature.swift; sourceTree = "<group>"; };
 		DF3F25492B615D8D00D87C11 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		DF4FBCED2B5FA1ED002CFDE3 /* ExemplesAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExemplesAnimations.swift; sourceTree = "<group>"; };
 		DF4FBCEF2B5FC396002CFDE3 /* LootRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LootRow.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				DF4FBCED2B5FA1ED002CFDE3 /* ExemplesAnimations.swift */,
 				DF4FBCEF2B5FC396002CFDE3 /* LootRow.swift */,
 				DF3F25492B615D8D00D87C11 /* Onboarding.swift */,
+				DF00958C2B63A7B000A86DF4 /* SelectedFeature.swift */,
 			);
 			path = ProjetSwiftUI;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF00958D2B63A7B000A86DF4 /* SelectedFeature.swift in Sources */,
 				DF3F254A2B615D8D00D87C11 /* Onboarding.swift in Sources */,
 				DF69FAD62B5A7975002CA436 /* ContentView.swift in Sources */,
 				DFF277682B5AA984004C4F72 /* Game.swift in Sources */,
