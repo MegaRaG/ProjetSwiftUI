@@ -9,29 +9,31 @@ import SwiftUI
 import Charts
 
 struct LootView: View {
+    @Environment(\.editMode) private var editMode
+    @StateObject var viewModel: OnboardingModel
     @ObservedObject var inventory = Inventory()
-    //@StateObject var viewModel: OnboardingModel
     @State var showAddItemView = false
     
     var body: some View {
         ZStack(alignment: .bottom) {
             NavigationView {
-                List {
-                    //                Section(header: Text("Onboarding")) {
-                    //                    Button(action: {
-                    //                        viewModel.isOnboardingComplete = false
-                    //                    }){
-                    //                        Text("Bouton Test")
-                    //                    }
-                    //                }
+                List{
+                    Section(header: Text("Onboarding")) {
+                        Button(action: {
+                            viewModel.isOnboardingComplete = false
+                        }){
+                            Text("Bouton Test")
+                        }
+                    }
                     Section(header: Text("Inventaire")) {
                         ForEach(inventory.loot, id: \.self) { item in
                             NavigationLink(destination: LootDetailView(item: item)) {
                                 ExtractedView(item: item)
                             }
+                        }.onDelete { indexSet in
+                            inventory.loot.remove(atOffsets: indexSet)
                         }
                     }
-                    
                     Section(header: Text("Statistiques").textCase(nil)) {
                         VStack(alignment: .center, spacing: 10) {
                             Text("Vos armes les plus puissantes")
@@ -78,37 +80,37 @@ struct LootView: View {
                         }
                     }
                     
-                }
-                .sheet(isPresented: $showAddItemView) {
-                    AddItemView()
-                        .environmentObject(inventory)
-                }
-                .navigationBarTitle("Loot")
-                .toolbar {
-                    ToolbarItem(placement: .automatic) {
-                        Button(action: {
-                            showAddItemView.toggle()
-                        }) {
-                            Image(systemName: "plus.circle.fill")
+                }.navigationBarTitle("Loot")
+                    .toolbar {
+                        ToolbarItem(placement: .automatic) {
+                            Button(action: {
+                                showAddItemView.toggle()
+                            }) {
+                                Image(systemName: "plus.circle.fill")
+                            }
                         }
                     }
-                }
-                
+                    .sheet(isPresented: $showAddItemView) {
+                        AddItemView()
+                            .environmentObject(inventory)
+                            .onDisappear {
+                                showAddItemView = false
+                            }
+                    }
             }
+            .edgesIgnoringSafeArea(.all)
         }
     }
 }
-struct WishListView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    struct WishListView: View {
+        var body: some View {
+            Text("Wish list")
+        }
     }
-}
-struct ProfileView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    
+    struct ProfileView: View {
+        var body: some View {
+            Text("Profile")
+        }
     }
-}
-
-#Preview {
-    LootView()
-}
+    

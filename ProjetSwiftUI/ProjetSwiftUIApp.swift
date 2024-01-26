@@ -18,8 +18,7 @@ struct ProjetSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             if viewModel.isOnboardingComplete {
-                //ContentView(viewModel: viewModel)
-                ContentView()
+                ContentView(viewModel: viewModel)
             } else {
                 OnboardingView(viewModel: viewModel)
             }

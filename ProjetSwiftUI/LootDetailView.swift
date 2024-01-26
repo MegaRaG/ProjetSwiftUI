@@ -9,12 +9,21 @@ import SwiftUI
 
 struct LootDetailView: View {
     var item: LootItem
+    @Environment(\.editMode) private var editMode
     @Environment(\.presentationMode) var presentationMode
     @State private var isAppeared = false
     @State private var isTapped = false
     @State private var animationAmount = 1.0
+    @State var showAddItemView = false
     
     var body: some View {
+        if editMode?.wrappedValue == .active {
+            AddItemView()
+                .onDisappear {
+                    showAddItemView = false
+                }
+        } else {
+        }
         VStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 40)
@@ -33,6 +42,8 @@ struct LootDetailView: View {
                                 }
                             }
                     )
+            }.sheet(isPresented: $showAddItemView) {
+                AddItemView()
             }
             .rotation3DEffect(
                 .degrees(isAppeared ? (isTapped ? 720 : 360) : 0),
@@ -67,7 +78,7 @@ struct LootDetailView: View {
                         .opacity(2 - animationAmount)
                         .animation(
                             .easeInOut(duration: 1)
-                                .repeatForever(autoreverses: false),
+                            .repeatForever(autoreverses: false),
                             value: animationAmount
                         )
                 )
@@ -109,6 +120,12 @@ struct LootDetailView: View {
                 Text("Rareté : \(String(describing: item.rarity).capitalized)")
             }
             .navigationBarTitle(item.name)
+        }
+        .animation(nil, value: editMode?.wrappedValue)
+        .toolbar {
+            ToolbarItem(placement: .automatic) {
+                EditButton()
+            }
         }
     }
 }

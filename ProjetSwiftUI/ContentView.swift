@@ -27,10 +27,11 @@ enum LooterFeature {
 
 struct ContentView: View {
     @State private var selectedFeature: LooterFeature = .loot
+    @StateObject var viewModel: OnboardingModel
 
     var body: some View {
         TabView(selection: $selectedFeature) {
-            LootView()
+            LootView(viewModel: viewModel)
                 .tabItem {
                     Label("Loot", systemImage: "bag.fill")
                 }
