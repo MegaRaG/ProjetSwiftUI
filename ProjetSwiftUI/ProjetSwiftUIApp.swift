@@ -7,17 +7,22 @@
 
 import SwiftUI
 
+class OnboardingModel: ObservableObject {
+    @AppStorage("isOnboardingComplete") var isOnboardingComplete: Bool = false
+}
+
 @main
 struct ProjetSwiftUIApp: App {
-    @AppStorage("isOnboardingComplete") var isOnboardingComplete: Bool = false
-    
+    @StateObject var viewModel = OnboardingModel()
+
     var body: some Scene {
         WindowGroup {
-            if isOnboardingComplete {
-                ContentView()
+            if viewModel.isOnboardingComplete {
+                ContentView(viewModel: viewModel)
             } else {
-                OnboardingView(isOnboardingComplete: $isOnboardingComplete)
+                OnboardingView(viewModel: viewModel)
             }
         }
     }
 }
+

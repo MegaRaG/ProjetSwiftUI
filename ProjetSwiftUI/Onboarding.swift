@@ -1,114 +1,67 @@
-//
-//  Onboarding.swift
-//  ProjetSwiftUI
-//
-//  Created by Ahmed OMEROVIC on 1/24/24.
-//
-
 import SwiftUI
 
 struct OnboardingView: View {
-    @Binding var isOnboardingComplete: Bool
-    @State private var currentPage = 0
-
+    @StateObject var viewModel: OnboardingModel
+    @State private var currentPage: Int = 1
+    
     var body: some View {
-        TabView(selection: $currentPage) {
-            OnboardingVue1(currentPage: $currentPage)
-            OnboardingVue2(currentPage: $currentPage)
-            OnboardingVue3(isOnboardingComplete: $isOnboardingComplete)
+        VStack {
+            TabView(selection: $currentPage) {
+                OnboardingPageView(title: "En un coup d'œil", description: "Explorez une interface intuitive qui vous permet de visualiser rapidement toutes les informations importantes sur vos objets.", imageName: "eye.fill", colorCircle: Color.green, currentPage: $currentPage, viewModel: viewModel)
+                    .tag(1)
+                OnboardingPageView(title: "Gérer ses loots", description: "Découvrez comment organiser et gérer efficacement vos objets et équipements dans votre collection de loots.", imageName: "hammer.fill", colorCircle: Color.blue, currentPage: $currentPage, viewModel: viewModel)
+                    .tag(2)
+                OnboardingPageView(title: "Votre wishlist", description: "Créez et partagez votre wishlist personnalisée en ajoutant vos objets préférés et découvrez des fonctionnalités exclusives.", imageName: "star.fill", colorCircle: Color.orange, currentPage: $currentPage, viewModel: viewModel)
+                    .tag(3)
+            }
+            .tabViewStyle(PageTabViewStyle())
+            .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
         }
-        .tabViewStyle(PageTabViewStyle())
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
     }
 }
 
-struct OnboardingVue1: View {
+struct OnboardingPageView: View {
+    var title: String
+    var description: String
+    var imageName: String
+    var colorCircle: Color
+    
     @Binding var currentPage: Int
+    @StateObject var viewModel: OnboardingModel
     
     var body: some View {
         VStack {
-            Text("Gérer ses loots")
+            Text(title)
                 .font(.largeTitle)
                 .padding()
-
             Circle()
-                .foregroundColor(Color.blue)
+                .foregroundColor(colorCircle)
                 .frame(width: 200, height: 200)
                 .overlay(
-                    Image(systemName: "hammer.fill")
+                    Image(systemName: imageName)
                         .foregroundColor(.white)
-                        .font(.system(size: 100))
+                        .padding()
                 )
-
-            Text("Découvrez comment organiser et gérer efficacement vos objets et équipements dans votre collection de loots.")
+            
+            Text(description)
                 .font(.subheadline)
                 .padding()
-
-            Button("Suivant") {
-                currentPage = 2
+            
+            Button(action: {
+                if currentPage <= 2 {
+                    currentPage += 1
+                } else {
+                    viewModel.isOnboardingComplete = true
+                }
+            }) {
+                if currentPage <= 2 {
+                    Text("Suivant")
+                } else {
+                    Text("Commencer")
+                }
             }
             .padding()
         }
+        .padding()
     }
 }
-
-struct OnboardingVue2: View {
-    @Binding var currentPage: Int
-    
-    var body: some View {
-        VStack {
-            Text("En un coup d'œil")
-                .font(.largeTitle)
-                .padding()
-
-            Circle()
-                .foregroundColor(Color.green)
-                .frame(width: 200, height: 200)
-                .overlay(
-                    Image(systemName: "eye.fill")
-                        .foregroundColor(.white)
-                        .font(.system(size: 100))
-                )
-
-            Text("Explorez une interface intuitive qui vous permet de visualiser rapidement toutes les informations importantes sur vos objets.")
-                .font(.subheadline)
-                .padding()
-
-            Button("Suivant") {
-                currentPage = 3
-            }
-            .padding()
-        }
-    }
-}
-
-struct OnboardingVue3: View {
-    @Binding var isOnboardingComplete: Bool
-    
-    var body: some View {
-        VStack {
-            Text("Votre wishlist")
-                .font(.largeTitle)
-                .padding()
-
-            Circle()
-                .foregroundColor(Color.orange)
-                .frame(width: 200, height: 200)
-                .overlay(
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.white)
-                        .font(.system(size: 100))
-                )
-
-            Text("Créez et partagez votre wishlist personnalisée en ajoutant vos objets préférés et découvrez des fonctionnalités exclusives.")
-                .font(.subheadline)
-                .padding()
-
-            Button("Terminer") {
-                isOnboardingComplete = true
-            }
-            .padding()
-        }
-    }
-}
-

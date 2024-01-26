@@ -23,11 +23,19 @@ class Inventory: ObservableObject {
 
 struct ContentView: View {
     @ObservedObject var inventory = Inventory()
+    @StateObject var viewModel: OnboardingModel
     @State var showAddItemView = false
     
     var body: some View {
         NavigationView {
             List {
+                Section(header: Text("Inventaire")) {
+                    Button(action: {
+                        viewModel.isOnboardingComplete = false
+                    }){
+                        
+                    }
+                }
                 Section(header: Text("Inventaire")) {
                     ForEach(inventory.loot, id: \.self) { item in
                         NavigationLink(destination: LootDetailView(item: item)) {
@@ -99,10 +107,6 @@ struct ContentView: View {
             }
         }
     }
-}
-
-#Preview {
-    ContentView()
 }
 
 
